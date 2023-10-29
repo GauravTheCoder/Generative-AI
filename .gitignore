@@ -9,3 +9,4 @@ share/
 # Ignore all pyenv folders
 pyenv/
 Scripts/
+pyvenv.cfg
