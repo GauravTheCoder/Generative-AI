@@ -1,0 +1,12 @@
+# Ignore all virtualenv folders
+venv/
+env/
+bin/
+lib/
+lib64/
+include/
+share/
+# Ignore all pyenv folders
+pyenv/
+# Include everything else
+**/*
