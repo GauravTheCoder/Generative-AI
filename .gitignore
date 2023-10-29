@@ -8,5 +8,4 @@ include/
 share/
 # Ignore all pyenv folders
 pyenv/
-# Include everything else
-**/*
+Scripts/
