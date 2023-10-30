@@ -1,9 +1,9 @@
-#The following fixes grammar of sentences given.
+#Parse unstructured data and create tables
 import os
 import openai
 
-messages=[{"role":"system", "content": "You will be provided with statements, and your task is to convert them to standard English."]
 openai.api_key = os.getenv("OPENAI_API_KEY")
+messages=[{"role":"system", "content": "You will be provided with unstructured data, and your task is to parse it into CSV format."]
 
 def multiline_input():
   input_list=[]
@@ -15,20 +15,20 @@ def multiline_input():
       break
   return '\n'.join(input_list)
 
-def fix_grammar():
+def structure_data():
   global messages
   while True:
     user_content=multiline_input()
     messages.append({"role": "user", "content": user_content})
     response = openai.ChatCompletion.create(
-    model="gpt-3.5-turbo",
-    messages=messages,
-    temperature=0,
-    max_tokens=256
+  model="gpt-4",
+  messages=messages,
+  temperature=0,
+  max_tokens=512
 )
     messages.append({"role": "assistant", "content": response})
     print(f"Assistant: {response}")
     if user_content.lower() in ("quit", "exit"):
       exit(0)
 
-fix_grammar()
+structure_data()
